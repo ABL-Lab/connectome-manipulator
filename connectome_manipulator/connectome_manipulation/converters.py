@@ -255,7 +255,7 @@ def parquet_to_sonata(
         ["parquet2hdf5", str(input_path), str(output_file), population_name],
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
-        env={"PATH": os.getenv("PATH", "")},
+        env={"PATH": os.getenv("PATH", ""), "LD_LIBRARY_PATH": os.getenv("LD_LIBRARY_PATH", "")},
     ) as proc:
         log.debug(proc.communicate()[0].decode())
     log.log_assert(
